@@ -10,14 +10,6 @@ RUN apk --no-cache --no-progress upgrade && \
     sed -i 's|^;* *\(workgroup = \).*|   \1helha.lan|' $file && \
     sed -i 's|^;* *\(server role = \).*|   \1classic primary domain controller|' $file && \
     sed -i 's|^;* *\(logon path = \).*|   \1\\\\%L\\Profiles\\%U|' $file && \
-    sed -i 's|^;* *\(log file = \).*|   \1/dev/stdout|' $file && \
-    sed -i 's|^;* *\(load printers = \).*|   \1no|' $file && \
-    sed -i 's|^;* *\(printcap name = \).*|   \1/dev/null|' $file && \
-    sed -i 's|^;* *\(printing = \).*|   \1bsd|' $file && \
-    sed -i 's|^;* *\(unix password sync = \).*|   \1no|' $file && \
-    sed -i 's|^;* *\(preserve case = \).*|   \1yes|' $file && \
-    sed -i 's|^;* *\(short preserve case = \).*|   \1yes|' $file && \
-    sed -i 's|^;* *\(default case = \).*|   \1lower|' $file && \
     sed -i '/Share Definitions/,$d' $file && \
     echo '   logon home = \\%L\%U' >>$file && \
     echo '   domain master = yes' >>$file && \
