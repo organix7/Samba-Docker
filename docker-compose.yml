@@ -16,8 +16,6 @@ services:
       - /tmp
     stdin_open: true
     tty: true
-    volumes:
-      - /mnt:/mnt:z
     command: ''
 
 networks:

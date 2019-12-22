@@ -47,7 +47,6 @@ RUN apk --no-cache --no-progress upgrade && \
     echo -ne "guigui\nguigui\n" | smbpasswd -a -s guigui && \
     mkdir /profiles/guigui.V2 && \
     chown guigui:guigui /profiles/guigui.V2 && \
-    chown guigui:guigui /profiles/guigui.V2 && \
     rm -rf /tmp/*
 
 CMD nmbd -D && smbd -D && bash
@@ -57,6 +56,4 @@ EXPOSE 137/udp 138/udp 139 445
 HEALTHCHECK --interval=60s --timeout=15s \
             CMD smbclient -L '\\localhost' -U '%' -m SMB3
 
-VOLUME ["/etc", "/var/cache/samba", "/var/lib/samba", "/var/log/samba",\
-            "/run/samba"]
 
